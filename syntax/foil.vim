@@ -21,7 +21,7 @@ let b:current_syntax = "foil"
 
 hi def link tagName Statement
 hi def link string String
-hi def link escaped_qoute Special
+hi def link escapedQoute Special
 hi def link path Constant
-hi def link escaped_gt Special
+hi def link escapedGt Special
 hi def link attribute Type
