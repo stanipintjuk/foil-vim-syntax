@@ -7,21 +7,24 @@ if exists("b:current_syntax")
   finish
 endif
 
-syn match tagName '[a-zA-Z0-9]\+' nextgroup=attribute skipwhite
-syn region tagBody start='{' end='}' fold transparent 
-syn region string start='"' end='"' contains=escapedQoute
-syn match escapedQoute '\\"' contained
-syn region path start='<' end='>' contains=escapedGt
-syn match escapedGt '\\>' contained
+syn match foilTagName '[a-zA-Z0-9]\+' nextgroup=foilAttribute skipwhite skipnl
+syn region foilTagBody start='{' end='}' fold transparent 
+syn region foilString start='"' end='"' contains=foilEscapedQoute
+syn match foilEscapedQoute '\\"\|\\\\' contained
+syn region foilPath matchgroup=foilPathDelims start='<' end='>' contains=foilEscapedGt oneline
+syn match foilEscapedGt '\\>' contained
 
-syn match attribute '[a-zA-Z0-9]\+' nextgroup=equals contained
-syn keyword equals = nextgroup=string,path contained
+syn match foilAttribute '[a-zA-Z0-9]\+='me=e-1 nextgroup=foilString,foilPath,foilAttribute skipwhite skipnl
+
+syn match foilSmallSelfClosedTag '[a-zA-Z0-9]\+;'
 
 let b:current_syntax = "foil"
 
-hi def link tagName Statement
-hi def link string String
-hi def link escapedQoute Special
-hi def link path Constant
-hi def link escapedGt Special
-hi def link attribute Type
+hi def link foilTagName Statement
+hi def link foilString String
+hi def link foilEscapedQoute Special
+hi def link foilPath Underlined
+hi def link foilEscapedGt Special
+hi def link foilAttribute Type
+hi def link foilPathDelims Normal
+hi def link foilSmallSelfClosedTag Special
