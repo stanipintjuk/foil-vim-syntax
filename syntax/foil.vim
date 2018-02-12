@@ -10,7 +10,7 @@ endif
 syn match tagName '[a-zA-Z0-9]\+' nextgroup=attribute skipwhite
 syn region tagBody start='{' end='}' fold transparent 
 syn region string start='"' end='"' contains=escapedQoute
-syn match escapedQoute '\\>' contained
+syn match escapedQoute '\\"' contained
 syn region path start='<' end='>' contains=escapedGt
 syn match escapedGt '\\>' contained
 
