@@ -17,6 +17,8 @@ syn match foilEscapedGt '\\>' contained
 syn match foilAttribute '[a-zA-Z0-9]\+='me=e-1 nextgroup=foilString,foilPath,foilAttribute skipwhite skipnl
 
 syn match foilSmallSelfClosedTag '[a-zA-Z0-9]\+;'
+syn match foilAddition '+'
+syn match foilSemiColon ';'
 
 let b:current_syntax = "foil"
 
@@ -26,5 +28,7 @@ hi def link foilEscapedQoute Special
 hi def link foilPath Underlined
 hi def link foilEscapedGt Special
 hi def link foilAttribute Type
-hi def link foilPathDelims Normal
+hi def link foilPathDelims Constant
 hi def link foilSmallSelfClosedTag Special
+hi def link foilAddition Statement
+hi def link foilSemiColon Statement
